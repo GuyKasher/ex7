@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Order Screen"
+        android:layout_marginBottom="100dp"
+        android:textSize="30dp"/>
+
+
+
+
+    <Switch
+        android:id="@+id/tahiniSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tahini"/>
+
+    <Switch
+        android:id="@+id/hummusSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hummus"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pickles" />
+
+    <NumberPicker
+        android:id="@+id/picklesNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tooltipText="pickles"/>
+
+    <EditText
+        android:id="@+id/comment"
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/colored_rect_with_rounded_corners"
+        android:elevation="4dp"
+        android:hint="comments"
+        android:maxLines="1"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+
+        />
+
+
+    <Button
+        android:id="@+id/SaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/custom_button"
+        android:text="save" />
+
+</LinearLayout>
