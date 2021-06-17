@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Switch hummus =  findViewById(R.id.hummusSwitch);
         Button save= findViewById(R.id.SaveButton);
         EditText comment = findViewById(R.id.comment);
+        EditText name = findViewById(R.id.customerName);
 
 
 
@@ -68,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
         save.setOnClickListener(v -> {
             String userInputString = comment.getText().toString();
+            String customerName=name.getText().toString();
             int picklesNum=pickleNumber.getValue();
-            dataBase.addNewOrder(picklesNum,tahiniStatus,hummusStatus,userInputString);
+            dataBase.addNewOrder(picklesNum,tahiniStatus,hummusStatus,userInputString,customerName);
             Intent intentToOpenEdit = new Intent(v.getContext(), EditOrderActivity.class);
             finish();
             v.getContext().startActivity(intentToOpenEdit);

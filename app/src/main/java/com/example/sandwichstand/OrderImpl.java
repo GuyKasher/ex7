@@ -50,7 +50,7 @@ public class OrderImpl implements Serializable {
 
 
     public void editOrder(int pickles, boolean tahini, boolean hummus, String comment) {
-        Sandwich newSandwich = new Sandwich(this.curSandwich.getId(),pickles, tahini, hummus, comment,this.curSandwich.getStatus());
+        Sandwich newSandwich = new Sandwich(this.curSandwich.getId(),pickles, tahini, hummus, comment,this.curSandwich.getStatus(),this.getCustomerName());
         this.curSandwich = newSandwich;
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -61,8 +61,8 @@ public class OrderImpl implements Serializable {
 
     }
 
-    public void addNewOrder(int pickles, boolean tahini, boolean hummus, String comment) {
-        Sandwich newSandwich = new Sandwich(pickles, hummus,tahini, comment);
+    public void addNewOrder(int pickles, boolean tahini, boolean hummus, String comment, String name) {
+        Sandwich newSandwich = new Sandwich(pickles, hummus,tahini, comment,name);
         this.curSandwich = newSandwich;
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -107,6 +107,10 @@ public class OrderImpl implements Serializable {
 
     }
 
+    public String getCustomerName(){
+        return this.curSandwich.getCustomer_name();
+    }
+
     public String getComment(){
         return this.curSandwich.getComment();
     }
@@ -115,7 +119,7 @@ public class OrderImpl implements Serializable {
     }
 
     public void editStatusOrder(String newStatus) {
-        Sandwich newSandwich = new Sandwich(this.curSandwich.getId(),this.getPickles(), this.getTahiniStatus(), this.getHummusStatus(), this.getComment(),newStatus);
+        Sandwich newSandwich = new Sandwich(this.curSandwich.getId(),this.getPickles(), this.getTahiniStatus(), this.getHummusStatus(), this.getComment(),newStatus,this.getCustomerName());
         this.curSandwich = newSandwich;
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
