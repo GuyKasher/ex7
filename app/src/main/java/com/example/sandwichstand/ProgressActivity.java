@@ -40,7 +40,7 @@ public class ProgressActivity extends AppCompatActivity {
                 if (snapshot != null && snapshot.exists()&&snapshot.getData().get("status").equals("ready")) {
                     Log.d("TAG", "Current data: " + snapshot.getData());
                     Intent change = new Intent(ProgressActivity.this, ReadyActivity.class);
-//                    dataBase.editStatusOrder("in-progress");
+                    dataBase.editStatusOrder("ready");
                     startActivity(change);
                     finish();
 

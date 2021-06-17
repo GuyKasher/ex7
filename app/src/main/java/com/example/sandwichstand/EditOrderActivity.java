@@ -8,6 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +38,8 @@ public class EditOrderActivity extends AppCompatActivity {
         Button save= findViewById(R.id.saveButton);
         Button delete= findViewById(R.id.deleteButton);
         EditText comment = findViewById(R.id.comment);
+        TextView title=findViewById(R.id.EditTitle);
+
         this.db = FirebaseFirestore.getInstance();
 
         dataBase = OrderApplication.getInstance().getDataBase();
@@ -46,7 +49,8 @@ public class EditOrderActivity extends AppCompatActivity {
         pickleNumber.setValue(dataBase.getPickles());
 
         comment.setText(dataBase.getComment());
-
+        String titleString="Edit Screen- "+ dataBase.getCustomerName();
+        title.setText(titleString);
         tahiniStatus=dataBase.getTahiniStatus();
         tahini.setChecked(tahiniStatus);
         hummusStatus=dataBase.getHummusStatus();
@@ -86,7 +90,7 @@ public class EditOrderActivity extends AppCompatActivity {
                 if (snapshot != null && snapshot.exists()&&snapshot.getData().get("status").equals("in-progress")) {
                     Log.d("TAG", "Current data: " + snapshot.getData());
                     Intent change = new Intent(EditOrderActivity.this, ProgressActivity.class);
-//                    dataBase.editStatusOrder("in-progress");
+                    dataBase.editStatusOrder("in-progress");
                     startActivity(change);
                     finish();
 

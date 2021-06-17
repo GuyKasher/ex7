@@ -110,7 +110,9 @@ public class OrderImpl implements Serializable {
     public String getCustomerName(){
         return this.curSandwich.getCustomer_name();
     }
-
+    public String getStatusOrder(){
+        return this.curSandwich.getStatus();
+    }
     public String getComment(){
         return this.curSandwich.getComment();
     }
@@ -126,7 +128,6 @@ public class OrderImpl implements Serializable {
         editor.putString(String.valueOf(curSandwich.getId()), curSandwich.itemToString());
         editor.apply();
 
-        db.collection("orders").document(curSandwich.getId()).set(curSandwich);
 
     }
 }

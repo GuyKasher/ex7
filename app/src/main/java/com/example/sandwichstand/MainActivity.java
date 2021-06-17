@@ -19,6 +19,35 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState == null || !savedInstanceState.containsKey("dataBase")) {
+            dataBase = OrderApplication.getInstance().getDataBase();
+        } else {
+            dataBase = (OrderImpl) savedInstanceState.getSerializable("dataBase");
+        }
+        if (dataBase.getCurrentSandwich()!=null) {
+            if (dataBase.getStatusOrder().equals("waiting")) {
+                Intent intentToOpenEdit = new Intent(MainActivity.this, EditOrderActivity.class);
+                finish();
+                startActivity(intentToOpenEdit);
+            }
+            if (dataBase.getStatusOrder().equals("in-progress")) {
+                Intent intentToOpenEdit = new Intent(MainActivity.this, ProgressActivity.class);
+                finish();
+                startActivity(intentToOpenEdit);
+            }
+            if (dataBase.getStatusOrder().equals("ready")) {
+                Intent intentToOpenEdit = new Intent(MainActivity.this, ReadyActivity.class);
+                finish();
+                startActivity(intentToOpenEdit);
+            }
+
+        }
+
+
+
+
+
+
         setContentView(R.layout.new_order);
 
         if (savedInstanceState == null || !savedInstanceState.containsKey("dataBase")) {
