@@ -34,6 +34,13 @@ public class OrderImpl implements Serializable {
 
     public void initialize() {
         Set<String> keys = sharedPreferences.getAll().keySet();
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        for (String k : keys) {
+//            editor.remove(String.valueOf(k));
+//        }
+//        editor.apply();
+
+
         for (String k : keys) {
             String itemString = sharedPreferences.getString(k, null);
             Sandwich sandwich = new Sandwich().stringToItem(itemString);
@@ -62,10 +69,14 @@ public class OrderImpl implements Serializable {
     }
 
     public void addNewOrder(int pickles, boolean tahini, boolean hummus, String comment, String name) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (this.curSandwich!=null){
+            editor.remove(String.valueOf(this.curSandwich.getId()));
+        }
+
         Sandwich newSandwich = new Sandwich(pickles, hummus,tahini, comment,name);
         this.curSandwich = newSandwich;
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(String.valueOf(newSandwich.getId()), newSandwich.itemToString());
         editor.apply();
 

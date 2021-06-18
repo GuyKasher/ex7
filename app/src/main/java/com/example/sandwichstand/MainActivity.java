@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.style.TtsSpan;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -45,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
         setContentView(R.layout.new_order);
 
         if (savedInstanceState == null || !savedInstanceState.containsKey("dataBase")) {
@@ -64,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         Button save= findViewById(R.id.SaveButton);
         EditText comment = findViewById(R.id.comment);
         EditText name = findViewById(R.id.customerName);
+        save.setEnabled(false);
 
 
 
@@ -76,7 +76,21 @@ public class MainActivity extends AppCompatActivity {
 
         hummusStatus = false;
         hummus.setChecked(false);
-//////attach a listener to check for changes in state
+
+       name.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void afterTextChanged(Editable s) {
+                // text did change
+                String newText = name.getText().toString();
+                save.setEnabled(!newText.equals(""));
+
+            }
+        });
+
+
+
+        //////attach a listener to check for changes in state
         tahini.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

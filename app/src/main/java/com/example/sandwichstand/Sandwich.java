@@ -12,7 +12,7 @@ public class Sandwich {
     public String comment;
     public String status;
 
-    public Sandwich(int p, boolean h, boolean t, String comment,String customer_name) {
+    public Sandwich(int p, boolean h, boolean t, String comment, String customer_name) {
         UUID uuid = UUID.randomUUID();
         this.id = uuid.toString();
         this.pickles = p;
@@ -20,11 +20,11 @@ public class Sandwich {
         this.tahini = t;
         this.comment = comment;
         this.status = "waiting";
-        this.customer_name=customer_name;
+        this.customer_name = customer_name;
 
     }
 
-    public Sandwich(String id, int p, boolean h, boolean t, String comment, String status,String customer_name) {
+    public Sandwich(String id, int p, boolean h, boolean t, String comment, String status, String customer_name) {
 
         this.id = id;
         this.pickles = p;
@@ -32,7 +32,7 @@ public class Sandwich {
         this.tahini = t;
         this.comment = comment;
         this.status = status;
-        this.customer_name=customer_name;
+        this.customer_name = customer_name;
 
     }
 
@@ -51,10 +51,10 @@ public class Sandwich {
             boolean tahini = Boolean.parseBoolean(split[3]);
             String comment = split[4];
             String status = split[5];
-            String name=split[6];
+            String name = split[6];
 
 
-            return new Sandwich(id, pickles, hummus, tahini, comment, status,name);
+            return new Sandwich(id, pickles, hummus, tahini, comment, status, name);
 
         } catch (Exception e) {
             return null;
@@ -67,7 +67,8 @@ public class Sandwich {
 
     public String itemToString() {
         return this.id + "#" + String.valueOf(this.pickles) + "#" + String.valueOf(this.hummus)
-                + "#" + String.valueOf(this.tahini) + "#" + this.comment + "#" + this.status+ "#" + this.customer_name;
+                + "#" + String.valueOf(this.tahini) + "#" + this.comment + "#" + this.status + "#" +
+                this.customer_name;
     }
 
     public boolean getHummus() {
