@@ -34,11 +34,6 @@ public class OrderImpl implements Serializable {
 
     public void initialize() {
         Set<String> keys = sharedPreferences.getAll().keySet();
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        for (String k : keys) {
-//            editor.remove(String.valueOf(k));
-//        }
-//        editor.apply();
 
 
         for (String k : keys) {
